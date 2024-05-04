@@ -1,0 +1,25 @@
+* {
+    margin:0;
+    padding:0;
+    border:none;
+    box-sizing: border-box;
+}
+
+html  {
+    font-size: 16px;
+}
+
+.lecteurAudioWithButtons button {
+    border:none;
+    background-color: white;
+}
+
+.iconeButton {
+    width: 2rem;
+}
+
+audio {
+    background-color: red;
+    display: blocks;
+    height: 40px;
+}
