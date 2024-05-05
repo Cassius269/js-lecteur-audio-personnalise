@@ -42,13 +42,12 @@ trackFullTime.textContent = buildDuration(audioDuration);
 
 // Gerer les boutons 
 
-let isButtonPlay = true;
 
 divButtons.addEventListener("click", (event)=>{
     //console.log(event.target);
 
     if(event.target.nodeName == "IMG"){
-        if(isButtonPlay){
+        if(event.target.getAttribute("src") === "assets/images/play-circle.svg"){
             console.log(audio)
 
             console.log("c'est le bounton play");
@@ -56,13 +55,11 @@ divButtons.addEventListener("click", (event)=>{
             event.target.setAttribute("src", "assets/images/media-pause.svg")
             event.target.setAttribute("alt", "icône représentant le bouton pause")
             audio.play();// jouer la musique
-            isButtonPlay = false;
         }else {
             console.log("c'est le bouton pause");
             event.target.setAttribute("src", "assets/images/play-circle.svg")
             event.target.setAttribute("alt", "icône représentant le bouton play")
             audio.pause(); // mettre en pause de la musique
-            isButtonPlay = true;
         }
     }
 })
@@ -81,8 +78,8 @@ track.addEventListener("change",(event)=>{
         console.log("la piste est finished");
         audio.pause();
 
-        iconeButtonPlay.setAttribute("src", "assets/images/media-pause.svg")
-        iconeButtonPlay.setAttribute("alt", "icône représentant le bouton pause")
+        iconeButtonPlay.setAttribute("src", "assets/images/play-circle.svg")
+        iconeButtonPlay.setAttribute("alt", "icône représentant le bouton play")
         //elapsedTime=0;  
 
     }
@@ -98,6 +95,16 @@ audio.addEventListener("timeupdate",()=>{
     console.log(track.value);
 
    console.log(audio.currentTime);
+
+   if(audio.currentTime === audioDuration){
+    console.log("la piste est finished");
+    audio.pause();
+
+    iconeButtonPlay.setAttribute("src", "assets/images/play-circle.svg")
+    iconeButtonPlay.setAttribute("alt", "icône représentant le bouton play")
+    //elapsedTime=0;  
+
+}
  })
 
  // Evenement pour changer le volume
