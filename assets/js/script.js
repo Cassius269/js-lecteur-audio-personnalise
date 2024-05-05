@@ -49,6 +49,8 @@ divButtons.addEventListener("click", (event)=>{
 
     if(event.target.nodeName == "IMG"){
         if(isButtonPlay){
+            console.log(audio)
+
             console.log("c'est le bounton play");
 
             event.target.setAttribute("src", "assets/images/media-pause.svg")
@@ -65,7 +67,7 @@ divButtons.addEventListener("click", (event)=>{
     }
 })
 
-// Mettre un écouteur d'évenement sur les changements de valeur de la track piste de l'audio
+// Mettre un écouteur d'évenement sur les changements de valeur de la track piste de l'audio au clic sur l'input
 track.addEventListener("change",(event)=>{
     console.log(track.value);
 
@@ -73,15 +75,14 @@ track.addEventListener("change",(event)=>{
     elapsedTime = (audioDuration*track.value)/100;
     audio.currentTime = elapsedTime; // modifier en temps réelle la valeur du temps actuelle de l'audio avec l'indicateur du temps passé
 
-    console.log(audio)
     elapsed.textContent = buildDuration(elapsedTime) // utiliser la fonction personnalisée de transformée des secondes en minutes et seconde
-
-    console.log("Durée actuelle", audio.currentTime);
-    console.log("Duréee totale", audioDuration);
 
     if(audio.currentTime.toFixed(2) === audioDuration.toFixed(2)){
         console.log("la piste est finished");
         audio.pause();
+
+        iconeButtonPlay.setAttribute("src", "assets/images/media-pause.svg")
+        iconeButtonPlay.setAttribute("alt", "icône représentant le bouton pause")
         //elapsedTime=0;  
 
     }
@@ -89,17 +90,18 @@ track.addEventListener("change",(event)=>{
 
 })
 
+// Visualiser le parcours de la piste audio
 audio.addEventListener("timeupdate",()=>{
     track.value = audio.currentTime;
     elapsed.textContent = buildDuration(audio.currentTime) // utiliser la fonction personnalisée de transformée des secondes en minutes et seconde
 
-    console.log(track.value)
+    console.log(track.value);
 
-   console.log(audio.currentTime)
+   console.log(audio.currentTime);
  })
 
+ // Evenement pour changer le volume
  volume.addEventListener("change", ()=>{
-    console.log("hello");
     audio.volume = volume.value;
     console.log(volume.value);
 
