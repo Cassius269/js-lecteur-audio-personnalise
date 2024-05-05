@@ -108,7 +108,7 @@ audio.addEventListener("timeupdate",()=>{
  })
 
  // Evenement pour changer le volume
- volume.addEventListener("change", ()=>{
+ volume.addEventListener("input", ()=>{
     audio.volume = volume.value;
     console.log(volume.value);
 
