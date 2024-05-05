@@ -18,8 +18,20 @@ html  {
     width: 2rem;
 }
 
-audio {
-    background-color: red;
-    display: blocks;
-    height: 40px;
+#buttonPause, #buttonStop {
+    display: none;
+}
+
+.inputPlusTrackTime {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.sectionLecteurAudio {
+    background: #b9acac;
+  display: flex;
+  width: 550px;
+  justify-content: space-around;
+  padding: 10px;
+  border-radius: 45px;
 }
