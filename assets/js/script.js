@@ -30,7 +30,7 @@ function buildDuration(duration){
         minutes = Math.trunc(minutes);
     }
 
-    return `/ ${minutes}:${secondes<10 ? "0"+secondes : secondes}`
+    return `${minutes}:${secondes<10 ? "0"+secondes : secondes}`
 }
 
 buildDuration(duration);
@@ -51,14 +51,24 @@ divButtons.addEventListener("click", (event)=>{
             console.log("c'est le bounton play");
             event.target.setAttribute("src", "assets/images/media-pause.svg")
             event.target.setAttribute("alt", "icône représentant le bouton pause")
-            audio.play();
+            audio.play();// jouer la musique
             isButtonPlay = false;
         }else {
             console.log("c'est le bouton pause");
             event.target.setAttribute("src", "assets/images/play-circle.svg")
             event.target.setAttribute("alt", "icône représentant le bouton play")
-            audio.pause();
+            audio.pause(); // mettre en pause de la musique
             isButtonPlay = true;
         }
     }
+})
+
+// Mettre un écouteur d'évenement sur les changements de valeur de la track piste de l'audio
+track.addEventListener("change",(event)=>{
+    console.log(track.value);
+
+    // Exprimer la durée écoulée en minutes et secondes
+    elapsedTime = (duration*track.value)/100;
+
+    elapsed.textContent = buildDuration(elapsedTime)
 })
