@@ -9,16 +9,17 @@ let divButtons = document.querySelector(".lecteurAudioWithButtons")
 //let buttonStop = document.querySelector("#buttonStop");
 let volume = document.querySelector("#volume");
 let volumeValue = document.querySelector("#volume-value");
+let iconeButtonPlay = document.querySelector(".iconeButton");
 
 // on récupère la durée du MP3
-let duration = audio.duration;
+let audioDuration = audio.duration;
 
-console.log(`durée de la piste musicale : ${duration} secondes`);
+console.log(`durée de la piste musicale : ${audioDuration} secondes`);
 
 // Créer une fonction qui récupère les minutes et les secondes de la piste de musique
-function buildDuration(duration){
+function buildDuration(duree){
     // Recupérer les minutes
-    minutes = duration/60;
+    minutes = duree/60;
     secondes = 0; // Déclarer par défaut les secondes à 0
 
     if(!Number.isInteger(minutes)){// Dans le cas où la piste a une durée avec des secondes
@@ -33,10 +34,10 @@ function buildDuration(duration){
     return `${minutes}:${secondes<10 ? "0"+secondes : secondes}`
 }
 
-buildDuration(duration);
+buildDuration(audioDuration);
 
 
-trackFullTime.textContent = buildDuration(duration);
+trackFullTime.textContent = buildDuration(audioDuration);
 
 
 // Gerer les boutons 
@@ -49,6 +50,7 @@ divButtons.addEventListener("click", (event)=>{
     if(event.target.nodeName == "IMG"){
         if(isButtonPlay){
             console.log("c'est le bounton play");
+
             event.target.setAttribute("src", "assets/images/media-pause.svg")
             event.target.setAttribute("alt", "icône représentant le bouton pause")
             audio.play();// jouer la musique
@@ -68,7 +70,38 @@ track.addEventListener("change",(event)=>{
     console.log(track.value);
 
     // Exprimer la durée écoulée en minutes et secondes
-    elapsedTime = (duration*track.value)/100;
+    elapsedTime = (audioDuration*track.value)/100;
+    audio.currentTime = elapsedTime; // modifier en temps réelle la valeur du temps actuelle de l'audio avec l'indicateur du temps passé
 
-    elapsed.textContent = buildDuration(elapsedTime)
+    console.log(audio)
+    elapsed.textContent = buildDuration(elapsedTime) // utiliser la fonction personnalisée de transformée des secondes en minutes et seconde
+
+    console.log("Durée actuelle", audio.currentTime);
+    console.log("Duréee totale", audioDuration);
+
+    if(audio.currentTime.toFixed(2) === audioDuration.toFixed(2)){
+        console.log("la piste est finished");
+        audio.pause();
+        //elapsedTime=0;  
+
+    }
+
+
 })
+
+audio.addEventListener("timeupdate",()=>{
+    track.value = audio.currentTime;
+    elapsed.textContent = buildDuration(audio.currentTime) // utiliser la fonction personnalisée de transformée des secondes en minutes et seconde
+
+    console.log(track.value)
+
+   console.log(audio.currentTime)
+ })
+
+ volume.addEventListener("change", ()=>{
+    console.log("hello");
+    audio.volume = volume.value;
+    console.log(volume.value);
+
+    volumeValue.textContent =volume.value*100+"%";
+ })
