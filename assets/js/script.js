@@ -20,9 +20,7 @@ function buildDuration(duration){
     minutes = duration/60;
     secondes = 0; // Déclarer par défaut les secondes à 0
 
-    if(Number.isInteger(minutes)){// Dans le cas où la piste n'a que des minutes entères
-        return minutes;
-    }else {// Dans le cas où la piste a une durée en décimal
+    if(!Number.isInteger(minutes)){// Dans le cas où la piste a une durée avec des secondes
         // Récuperer les secondes dans la durée
         secondes = (minutes - Math.trunc(minutes))*60;
 
@@ -31,7 +29,7 @@ function buildDuration(duration){
         minutes = Math.trunc(minutes);
     }
 
-    return `/ ${minutes}:${secondes}`
+    return `/ ${minutes}:${secondes<10 ? "0"+secondes : secondes}`
 }
 
 buildDuration(duration);
@@ -41,3 +39,4 @@ trackFullTime.textContent = buildDuration(duration);
 
 
 // Jouer la piste
+  
