@@ -9,6 +9,12 @@ html  {
     font-size: 16px;
 }
 
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+
 .lecteurAudioWithButtons button {
     border:none;
     background-color: white;
@@ -32,6 +38,8 @@ html  {
   display: flex;
   width: 550px;
   justify-content: space-around;
+  align-items: center;
   padding: 10px;
   border-radius: 45px;
-}
+margin: auto;
+margin-top: 5rem}

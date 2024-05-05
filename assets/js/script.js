@@ -4,8 +4,9 @@ let track = document.querySelector("#track");
 let elapsed = document.querySelector("#elapsed");
 let trackFullTime = document.querySelector("#track-fullTime");
 let buttonPlay = document.querySelector("#buttonPlay");
-let buttonPause = document.querySelector("#buttonPause");
-let buttonStop = document.querySelector("#buttonStop");
+let divButtons = document.querySelector(".lecteurAudioWithButtons")
+//let buttonPause = document.querySelector("#buttonPause");
+//let buttonStop = document.querySelector("#buttonStop");
 let volume = document.querySelector("#volume");
 let volumeValue = document.querySelector("#volume-value");
 
@@ -24,7 +25,7 @@ function buildDuration(duration){
         // Récuperer les secondes dans la durée
         secondes = (minutes - Math.trunc(minutes))*60;
 
-        // Tronquer les parties décimales
+        // Récuperer les parties entières des unités de temps en minutees et secondes
         secondes = Math.trunc(secondes);
         minutes = Math.trunc(minutes);
     }
@@ -38,5 +39,26 @@ buildDuration(duration);
 trackFullTime.textContent = buildDuration(duration);
 
 
-// Jouer la piste
-  
+// Gerer les boutons 
+
+let isButtonPlay = true;
+
+divButtons.addEventListener("click", (event)=>{
+    //console.log(event.target);
+
+    if(event.target.nodeName == "IMG"){
+        if(isButtonPlay){
+            console.log("c'est le bounton play");
+            event.target.setAttribute("src", "assets/images/media-pause.svg")
+            event.target.setAttribute("alt", "icône représentant le bouton pause")
+            audio.play();
+            isButtonPlay = false;
+        }else {
+            console.log("c'est le bouton pause");
+            event.target.setAttribute("src", "assets/images/play-circle.svg")
+            event.target.setAttribute("alt", "icône représentant le bouton play")
+            audio.pause();
+            isButtonPlay = true;
+        }
+    }
+})
