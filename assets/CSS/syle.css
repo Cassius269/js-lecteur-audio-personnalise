@@ -1,41 +1,41 @@
 * {
-    margin:0;
-    padding:0;
-    border:none;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: none;
+  box-sizing: border-box;
 }
 
-html  {
-    font-size: 16px;
+html {
+  font-size: 16px;
 }
 
 h1 {
-    text-align: center;
-    margin-bottom: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 
 .lecteurAudioWithButtons button {
-    border:none;
-    background-color: white;
+  border: none;
+  background-color: white;
 }
 
 .iconeButton {
-    width: 4rem;
+  width: 4rem;
 }
 
 
 
 .inputPlusTrackTime {
-    display: flex;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .sectionLecteurAudio {
-    background: #b9acac;
+  background: #b9acac;
   display: flex;
   width: 600px;
-  max-height: 5rem;
+  max-height: 4rem;
   justify-content: space-around;
   align-items: center;
   padding: 10px;
@@ -44,11 +44,11 @@ h1 {
 }
 
 .ImageIllustrationEmission {
-    background-image: url("https://img.freepik.com/premium-photo/girl-has-urban-lifestyle_273609-54804.jpg");
-    background-repeat: no-repeat;
-    height: 233px;
-    width: 533px;
-    display: flex;
+  background-image: url("https://img.freepik.com/premium-photo/girl-has-urban-lifestyle_273609-54804.jpg");
+  background-repeat: no-repeat;
+  height: 233px;
+  width: 533px;
+  display: flex;
   justify-content: center;
   align-content: flex-end;
   align-items: baseline;
@@ -56,22 +56,22 @@ h1 {
 }
 
 .titreEmission {
-    position: relative;
-    top: 4rem;
-    right: 4rem;
-    color: white;
-  }
+  position: relative;
+  top: 4rem;
+  right: 4rem;
+  color: white;
+}
 
 
 .sectionGlobaleLecteur {
-display: flex;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-#buttonPlay{
-    position: relative;
+#buttonPlay {
+  position: relative;
   right: 1.5rem;
   top: 4px;
   height: 3rem;
