@@ -18,6 +18,9 @@ let audioDuration = audio.duration;
 
 console.log(`durée de la piste musicale : ${audioDuration} secondes`);
 
+// on met le max du range de la track à la taille de la durée de l'audio
+track.max = audioDuration;
+
 // Créer une fonction qui récupère les minutes et les secondes de la piste de musique
 function buildDuration(duree){
     // Recupérer les minutes
@@ -67,13 +70,14 @@ divButtons.addEventListener("click", (event)=>{
 
 // Mettre un écouteur d'évenement sur les changements de valeur de la track piste de l'audio au clic sur l'input
 track.addEventListener("change",(event)=>{
-    console.log(track.value);
 
     // Exprimer la durée écoulée en minutes et secondes
-    elapsedTime = (audioDuration*track.value)/100;
+    elapsedTime = event.target.value;
     audio.currentTime = elapsedTime; // modifier en temps réelle la valeur du temps actuelle de l'audio avec l'indicateur du temps passé
 
     elapsed.textContent = buildDuration(elapsedTime) // utiliser la fonction personnalisée de transformée des secondes en minutes et seconde
+console.log("elapsed time",elapsedTime);
+console.log(event);
 
 })
 
