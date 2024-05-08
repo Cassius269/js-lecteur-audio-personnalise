@@ -1,4 +1,6 @@
-// On recupère tous les élements nécessaires
+window.addEventListener("load",()=>{
+    console.log("hello");
+    // On recupère tous les élements nécessaires
 let audio = document.querySelector("audio");
 let track = document.querySelector("#track");
 let elapsed = document.querySelector("#elapsed");
@@ -42,7 +44,6 @@ trackFullTime.textContent = buildDuration(audioDuration);
 
 // Gerer les boutons 
 
-
 divButtons.addEventListener("click", (event)=>{
     //console.log(event.target);
 
@@ -74,17 +75,6 @@ track.addEventListener("change",(event)=>{
 
     elapsed.textContent = buildDuration(elapsedTime) // utiliser la fonction personnalisée de transformée des secondes en minutes et seconde
 
-    if(audio.currentTime.toFixed(2) === audioDuration.toFixed(2)){
-        console.log("la piste est finished");
-        audio.pause();
-
-        iconeButtonPlay.setAttribute("src", "assets/images/play-circle.svg")
-        iconeButtonPlay.setAttribute("alt", "icône représentant le bouton play")
-        //elapsedTime=0;  
-
-    }
-
-
 })
 
 // Visualiser le parcours de la piste audio
@@ -96,7 +86,7 @@ audio.addEventListener("timeupdate",()=>{
 
    console.log(audio.currentTime);
 
-   if(audio.currentTime === audioDuration){
+if(audio.currentTime.toFixed(2) === audioDuration.toFixed(2)){
     console.log("la piste est finished");
     audio.pause();
 
@@ -113,4 +103,5 @@ audio.addEventListener("timeupdate",()=>{
     console.log(volume.value);
 
     volumeValue.textContent =volume.value*100+"%";
+ })
  })
