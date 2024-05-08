@@ -48,8 +48,6 @@ trackFullTime.textContent = buildDuration(audioDuration);
 // Gerer les boutons 
 
 divButtons.addEventListener("click", (event)=>{
-    //console.log(event.target);
-
     if(event.target.nodeName == "IMG"){
         if(event.target.getAttribute("src") === "assets/images/play-circle.svg"){
             console.log(audio)
@@ -86,26 +84,16 @@ audio.addEventListener("timeupdate",()=>{
     track.value = audio.currentTime;
     elapsed.textContent = buildDuration(audio.currentTime) // utiliser la fonction personnalisée de transformée des secondes en minutes et seconde
 
-    console.log(track.value);
-
-   console.log(audio.currentTime);
-
-if(audio.currentTime.toFixed(2) === audioDuration.toFixed(2)){
-    console.log("la piste est finished");
-    audio.pause();
-
-    iconeButtonPlay.setAttribute("src", "assets/images/play-circle.svg")
-    iconeButtonPlay.setAttribute("alt", "icône représentant le bouton play")
-    //elapsedTime=0;  
-
+    if(audio.currentTime.toFixed(2) === audioDuration.toFixed(2)){// dans le cas où la piste est finie, remettre le bouton play
+    iconeButtonPlay.setAttribute("src", "assets/images/play-circle.svg");
+    iconeButtonPlay.setAttribute("alt", "icône représentant le bouton play");
 }
  })
 
  // Evenement pour changer le volume
  volume.addEventListener("input", ()=>{
     audio.volume = volume.value;
-    console.log(volume.value);
 
-    volumeValue.textContent =volume.value*100+"%";
+    volumeValue.textContent =Math.round(volume.value*100)+"%";
  })
  })
