@@ -78,3 +78,11 @@ h1 {
   border-radius: 50px;
   background-color: #D9D9D9;
 }
+#track {
+  -webkit-appearance: none;/* Personnalisation de l'affichage de la barre de la piste audio pour Mozzila */
+  background-color: #020202;
+  border-radius: 50px;
+  height: 7px;
+  position: relative;
+  top: 4px;
+}
